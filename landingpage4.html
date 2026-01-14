@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zomato Food Photos | Landing Page</title>
+    <style>
+      :root {
+        --primary: #e23744;
+        --bg: #f9f9f9;
+        --text: #222;
+        --muted: #666;
+        --border: #e6e6e6;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      /* Header */
+      header {
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .search {
+        flex: 1;
+        margin: 0 20px;
+        display: flex;
+      }
+      .search input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+      .search button {
+        padding: 10px 14px;
+        border: none;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      /* Hero */
+      .hero {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .hero-text {
+        flex: 1;
+        min-width: 260px;
+      }
+      .hero h1 {
+        margin: 0 0 10px;
+        font-size: 28px;
+        color: var(--primary);
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .hero-img {
+        flex: 1;
+        min-width: 260px;
+      }
+      .hero-img img {
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      /* Grid */
+      .grid {
+        max-width: 1100px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .card-body {
+        padding: 12px;
+      }
+      .title {
+        font-weight: 600;
+        margin: 0 0 6px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      /* Footer */
+      footer {
+        background: #fff;
+        border-top: 1px solid var(--border);
+        margin-top: 30px;
+      }
+      .footer-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav">
+        <div class="brand">Zomato Food Photos</div>
+        <div class="search">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search food or restaurants..."
+          />
+          <button id="searchBtn">Search</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Discover food through photos</h1>
+        <p>Browse mouth-watering dishes and restaurant galleries near you.</p>
+      </div>
+      <div class="hero-img">
+        <img
+          src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop"
+          alt="Food banner"
+        />
+      </div>
+    </section>
+
+    <!-- Food Photo Grid -->
+    <section class="grid" id="catalog"></section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-wrap">
+        <div>© 2026 Zomato Food Photos — Demo Landing Page</div>
+        <div>Contact: support@zomatodemo.com</div>
+      </div>
+    </footer>
+
+    <script>
+      const foods = [
+        {
+          id: 1,
+          title: "Cheese Burst Pizza",
+          restaurant: "Domino's",
+          img: "https://images.unsplash.com/photo-1601924582971-6f1c9a0f0f3a?q=80&w=800&auto=format&fit=crop",
+        },
+        {
+          id: 2,
+          title: "Butter Chicken",
+          restaurant: "Punjabi Dhaba",
+          img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?q=80&w=800&auto=format&fit=crop",
+        },
+        {
+          id: 3,
+          title: "Hyderabadi Biryani",
+          restaurant: "Paradise",
+          img: "https://images.unsplash.com/photo-1604908177522-0400d2d9f3c6?q=80&w=800&auto=format&fit=crop",
+        },
+        {
+          id: 4,
+          title: "Veg Burger",
+          restaurant: "Burger King",
+          img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+        },
+        {
+          id: 5,
+          title: "Masala Dosa",
+          restaurant: "Udupi Cafe",
+          img: "https://images.unsplash.com/photo-1626082927387-6a5c16c3b0e9?q=80&w=800&auto=format&fit=crop",
+        },
+      ];
+
+      const catalog = document.getElementById("catalog");
+
+      function renderFoods(list) {
+        catalog.innerHTML = list
+          .map(
+            (f) => `
+        <article class="card">
+          <img src="${f.img}" alt="${f.title}" />
+          <div class="card-body">
+            <h3 class="title">${f.title}</h3>
+            <div class="meta">${f.restaurant}</div>
+          </div>
+        </article>
+      `,
+          )
+          .join("");
+      }
+
+      // Search
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
+      searchBtn.addEventListener("click", () => {
+        const q = searchInput.value.toLowerCase();
+        const filtered = foods.filter(
+          (f) =>
+            f.title.toLowerCase().includes(q) ||
+            f.restaurant.toLowerCase().includes(q),
+        );
+        renderFoods(filtered);
+      });
+
+      // Initial render
+      renderFoods(foods);
+    </script>
+  </body>
+</html>
